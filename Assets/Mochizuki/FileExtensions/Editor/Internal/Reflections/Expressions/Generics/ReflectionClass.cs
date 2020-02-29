@@ -72,7 +72,7 @@ namespace Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions.Gener
                 ? Expression.Call(instance, mi)
                 : Expression.Call(instance, mi, mi.GetParameters().Select((w, i) => Expression.Convert(Expression.ArrayIndex(args, Expression.Constant(i)), w.ParameterType)).Cast<Expression>().ToArray());
 
-            Debug.Log(string.Format("Method Accessor is created for {0} in {1}", mi.Name, typeof(T).FullName));
+            Debug.Log(string.Format("[Mochizuki.FileExtensions] Method Accessor is created for {0} in {1}", mi.Name, typeof(T).FullName));
 
             return Expression.Lambda<Func<T, object[], object>>(Expression.Convert(body, typeof(object)), instance, args).Compile();
         }
@@ -84,7 +84,7 @@ namespace Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions.Gener
                 var instance = Expression.Parameter(typeof(T), "instance");
                 var body = Expression.PropertyOrField(instance, name);
 
-                Debug.Log(string.Format("Member Accessor is created for {0} in {1}", name, typeof(T).FullName));
+                Debug.Log(string.Format("[Mochizuki.FileExtensions] Member Accessor is created for {0} in {1}", name, typeof(T).FullName));
 
                 return Expression.Lambda<Func<T, object>>(Expression.Convert(body, typeof(object)), instance).Compile();
             }
