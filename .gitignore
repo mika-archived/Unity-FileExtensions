@@ -409,3 +409,7 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/unity,visualstudio
+
+# Exported
+/[Aa]ssets/Mochizuki/Packages/
+/[Aa]ssets/Mochizuki/Packages.meta
