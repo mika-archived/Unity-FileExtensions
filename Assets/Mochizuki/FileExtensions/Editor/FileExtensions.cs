@@ -10,8 +10,6 @@ using UnityEngine;
 
 using Object = UnityEngine.Object;
 
-#if UNITY_EDITOR
-
 namespace Mochizuki.Editor
 {
     [InitializeOnLoad]
@@ -114,5 +112,3 @@ namespace Mochizuki.Editor
         }
     }
 }
-
-#endif
