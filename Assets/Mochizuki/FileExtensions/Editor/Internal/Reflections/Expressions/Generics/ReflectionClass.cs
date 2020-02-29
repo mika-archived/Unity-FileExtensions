@@ -11,15 +11,27 @@ using System.Reflection;
 
 using UnityEngine;
 
+using Object = UnityEngine.Object;
+
 namespace Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions.Generics
 {
     public class ReflectionClass<T> where T : class
     {
         protected T Instance { get; private set; }
 
+        protected Object RawInstance
+        {
+            get { return Instance as Object; }
+        }
+
         protected ReflectionClass(T instance)
         {
             Instance = instance;
+        }
+
+        public bool IsAlive()
+        {
+            return RawInstance != null && RawInstance;
         }
 
         protected TResult InvokeMethod<TResult>(string name, BindingFlags bindingFlags, params object[] parameters)

@@ -45,6 +45,7 @@ namespace Mochizuki.FileExtensions.Editor
             var instanceId = AssetDatabase.LoadAssetAtPath<Object>(path).GetInstanceID();
 
             if (_browser == null) _browser = ProjectBrowser.Instance;
+            if (!_browser.IsAlive()) _browser = ProjectBrowser.Instance;
 
             if (_browser.IsTwoColumns())
                 ShowExtensionInTwoColumn(selectionRect, path, extension, instanceId);

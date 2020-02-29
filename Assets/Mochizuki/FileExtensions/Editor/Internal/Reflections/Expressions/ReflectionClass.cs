@@ -12,6 +12,8 @@ using System.Reflection;
 
 using UnityEngine;
 
+using Object = UnityEngine.Object;
+
 namespace Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions
 {
     public class ReflectionClass
@@ -20,6 +22,11 @@ namespace Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions
         private readonly object _instance;
         private readonly Type _type;
 
+        protected Object RawInstance
+        {
+            get { return _instance as Object; }
+        }
+
         protected ReflectionClass(object instance, Type type)
         {
             _instance = instance;
@@ -27,6 +34,11 @@ namespace Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions
 
             if (Caches[_type] == null)
                 Caches[_type] = new Cache();
+        }
+
+        public bool IsAlive()
+        {
+            return RawInstance != null && RawInstance;
         }
 
         protected TResult InvokeMethod<TResult>(string name, BindingFlags flags, params object[] parameters)
