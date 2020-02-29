@@ -1,6 +1,11 @@
-﻿#if UNITY_2017
+﻿/*-------------------------------------------------------------------------------------------
+ * Copyright (c) Fuyuno Mikazuki / Natsuneko. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *------------------------------------------------------------------------------------------*/
 
-namespace Mochizuki.Editor.Internal.Extensions
+#if UNITY_2017
+
+namespace Mochizuki.FileExtensions.Editor.Internal.Extensions
 {
     public static class StringExtension
     {

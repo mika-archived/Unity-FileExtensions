@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿/*-------------------------------------------------------------------------------------------
+ * Copyright (c) Fuyuno Mikazuki / Natsuneko. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *------------------------------------------------------------------------------------------*/
 
-using Mochizuki.Editor.Internal.Reflections.Expressions.Generics;
+using System.Collections.Generic;
 
-namespace Mochizuki.Editor.Internal.Reflections
+using Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions.Generics;
+
+namespace Mochizuki.FileExtensions.Editor.Internal.Reflections
 {
     public class TreeViewState : ReflectionClass<UnityEditor.IMGUI.Controls.TreeViewState>
     {

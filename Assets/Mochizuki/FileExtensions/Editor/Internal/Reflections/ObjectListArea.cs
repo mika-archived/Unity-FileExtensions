@@ -1,6 +1,11 @@
-﻿using Mochizuki.Editor.Internal.Reflections.Expressions;
+﻿/*-------------------------------------------------------------------------------------------
+ * Copyright (c) Fuyuno Mikazuki / Natsuneko. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *------------------------------------------------------------------------------------------*/
 
-namespace Mochizuki.Editor.Internal.Reflections
+using Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions;
+
+namespace Mochizuki.FileExtensions.Editor.Internal.Reflections
 {
     public class ObjectListArea : ReflectionClass
     {

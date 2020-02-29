@@ -1,10 +1,15 @@
-﻿using System.Reflection;
+﻿/*-------------------------------------------------------------------------------------------
+ * Copyright (c) Fuyuno Mikazuki / Natsuneko. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *------------------------------------------------------------------------------------------*/
 
-using Mochizuki.Editor.Internal.Reflections.Expressions;
+using System.Reflection;
+
+using Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions;
 
 using UnityEngine;
 
-namespace Mochizuki.Editor.Internal.Reflections
+namespace Mochizuki.FileExtensions.Editor.Internal.Reflections
 {
     public class ObjectListLocalGroup : ReflectionClass
     {

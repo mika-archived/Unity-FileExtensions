@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*-------------------------------------------------------------------------------------------
+ * Copyright (c) Fuyuno Mikazuki / Natsuneko. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *------------------------------------------------------------------------------------------*/
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +12,7 @@ using System.Reflection;
 
 using UnityEngine;
 
-namespace Mochizuki.Editor.Internal.Reflections.Expressions
+namespace Mochizuki.FileExtensions.Editor.Internal.Reflections.Expressions
 {
     public class ReflectionClass
     {

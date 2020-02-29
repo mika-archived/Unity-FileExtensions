@@ -1,8 +1,13 @@
-﻿using System;
+﻿/*-------------------------------------------------------------------------------------------
+ * Copyright (c) Fuyuno Mikazuki / Natsuneko. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *------------------------------------------------------------------------------------------*/
+
+using System;
 using System.IO;
 
-using Mochizuki.Editor.Internal.Extensions;
-using Mochizuki.Editor.Internal.Reflections;
+using Mochizuki.FileExtensions.Editor.Internal.Extensions;
+using Mochizuki.FileExtensions.Editor.Internal.Reflections;
 
 using UnityEditor;
 
@@ -10,7 +15,7 @@ using UnityEngine;
 
 using Object = UnityEngine.Object;
 
-namespace Mochizuki.Editor
+namespace Mochizuki.FileExtensions.Editor
 {
     [InitializeOnLoad]
     public static class FileExtensions
