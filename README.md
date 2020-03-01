@@ -5,7 +5,10 @@ The Unity Editor Extension that displays file extension in Unity project tree.
 ## Support Version
 
 * Unity 2017 or newer (development at Unity 2017.4.28f1)
-  * Because I used Unity 2017 in VRChat project.
+  * The following versions have been tested
+    * Unity 2017.4.28f1
+    * Unity 2018.1.6f1
+    * Unity 2018.4.14f1
 
 
 ## Features
