@@ -7,12 +7,17 @@ using System;
 using System.IO;
 using System.Linq;
 
-using Mochizuki.FileExtensions.Editor.Internal.Extensions;
 using Mochizuki.FileExtensions.Editor.Internal.Reflections;
 
 using UnityEditor;
 
 using UnityEngine;
+
+#if UNITY_2017
+
+using Mochizuki.FileExtensions.Editor.Internal.Extensions;
+
+#endif
 
 namespace Mochizuki.FileExtensions.Editor
 {
@@ -33,15 +38,28 @@ namespace Mochizuki.FileExtensions.Editor
         private static void OnProjectWindowItemOnGui(string guid, Rect selectionRect)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
-
-            if (path.IsNullOrWhitespace()) // I want to use string.IsNullOrWhiteSpace in Unity 2017 (.NET 3.5)
+#if UNITY_2018_1_OR_NEWER
+            if (string.IsNullOrWhiteSpace(path))
+#else
+            if (path.IsNullOrWhitespace())
+#endif
                 return;
 
             var extension = Path.GetExtension(path);
+#if UNITY_2018_1_OR_NEWER
+            if (string.IsNullOrWhiteSpace(extension))
+#else
             if (extension.IsNullOrWhitespace())
+#endif
                 return;
 
-            var instanceId = -1;
+#if UNITY_2018_1_OR_NEWER
+            var package = Packages.GetForAssetPath(path);
+            if (package != null && package.assetPath == path)
+                return;
+#endif
+
+            var instanceId = int.MinValue;
             var obj = Selection.assetGUIDs.Select((w, i) => new { GUID = w, Index = i }).FirstOrDefault(w => w.GUID == guid);
             if (obj != null)
                 instanceId = Selection.instanceIDs[obj.Index];
