@@ -14,8 +14,6 @@ using UnityEditor;
 
 using UnityEngine;
 
-using Object = UnityEngine.Object;
-
 namespace Mochizuki.FileExtensions.Editor
 {
     [InitializeOnLoad]
@@ -43,16 +41,10 @@ namespace Mochizuki.FileExtensions.Editor
             if (extension.IsNullOrWhitespace())
                 return;
 
-            var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
-            var instanceId = asset == null ? -1 : asset.GetInstanceID();
-
-            // Maybe ScriptableObject?
-            if (asset == null)
-            {
-                var obj = Selection.assetGUIDs.Select((w, i) => new { GUID = w, Index = i }).FirstOrDefault(w => w.GUID == guid);
-                if (obj != null)
-                    instanceId = Selection.instanceIDs[obj.Index];
-            }
+            var instanceId = -1;
+            var obj = Selection.assetGUIDs.Select((w, i) => new { GUID = w, Index = i }).FirstOrDefault(w => w.GUID == guid);
+            if (obj != null)
+                instanceId = Selection.instanceIDs[obj.Index];
 
             if (_browser == null) _browser = ProjectBrowser.Instance;
             if (!_browser.IsAlive()) _browser = ProjectBrowser.Instance;
