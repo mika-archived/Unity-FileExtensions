@@ -60,7 +60,7 @@ namespace Mochizuki.FileExtensions.Editor
 #if UNITY_2018_2_OR_NEWER
 #if UNITY_2019_2_OR_NEWER
             var package = PackageInfo.FindForAssetPath(path);
-            if (package != null && package.assetPath.ToLower() == path)
+            if (package != null && string.Equals(package.assetPath, path, StringComparison.CurrentCultureIgnoreCase))
                 return;
 #else
             var package = Internal.Reflections.Packages.GetForAssetPath(path);
