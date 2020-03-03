@@ -13,13 +13,15 @@ using UnityEditor;
 
 using UnityEngine;
 
+using Object = UnityEngine.Object;
+
 #if UNITY_2017
-
 using Mochizuki.FileExtensions.Editor.Internal.Extensions;
-
 #endif
 
-using Object = UnityEngine.Object;
+#if UNITY_2019_2_OR_NEWER
+using PackageInfo = UnityEditor.PackageManager.PackageInfo;
+#endif
 
 namespace Mochizuki.FileExtensions.Editor
 {
@@ -56,9 +58,15 @@ namespace Mochizuki.FileExtensions.Editor
                 return;
 
 #if UNITY_2018_2_OR_NEWER
-            var package = Packages.GetForAssetPath(path);
+#if UNITY_2019_2_OR_NEWER
+            var package = PackageInfo.FindForAssetPath(path);
+            if (package != null && package.assetPath.ToLower() == path)
+                return;
+#else
+            var package = Internal.Reflections.Packages.GetForAssetPath(path);
             if (package != null && package.assetPath == path)
                 return;
+#endif
 #endif
 
             var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
@@ -100,8 +108,13 @@ namespace Mochizuki.FileExtensions.Editor
             var label = EditorStyles.label;
             var vector = label.CalcSize(new GUIContent(filename));
 
+#if UNITY_2019_2_OR_NEWER
+            rect.x += vector.x + 16;
+            rect.y += 1;
+#else
             rect.x += vector.x + 14;
             rect.y += 2;
+#endif
 
             ShowLabel(rect, extension, _browser.AssetTreeState.SelectedIds.Contains(instanceId));
         }
